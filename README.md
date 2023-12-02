@@ -1,65 +1,5 @@
-===============================  
- work in progres - cheat sheet  
-  .MD -- *formatting* :  
-
-This text is ***really important***!  
-**fat-text**  
-*italic*  
-
-  # Header - big  
-  ...  
-  ###### Header - small   
-
----
-
-*LISTS*:  
-1. step one
-2. step two
-
-* Item one
-* Item two
-
-- First item
-- Second item
-- Third item
-    - Indented item
-    - Indented item
-- Fourth item
- 
-*CODE*:  
-`Inlinecode`  
-
-```
-Beispiel für 
-einen Codeblock.
-```
-
-*COMMENTS*:  
-> Blockzitate müssen mit einer  
-> Leerzeile beginnen  
-> und enden  
-
-> Nested code  
-> block :  
->> example  
-
-> #### ADVANCED EXAMPLE!  
->  
-> - Beautiful  
-> - Nested  
->  
->  *COMMENTS* are **very ***nice*** to read**.  
-
-
-*LINKS*:  
-![Optionaler Alternativtext, falls sich das Bild nicht laden lässt](http://www.sampleurl.com/logo.png)  
-[Text to show on a link](http://www.sampleurl.com)  
-[![Alt-Text](imageurl)](linkurl)  
-
-===============================
-
-# Uebung-020  --  ...
-
+# Uebung-031  --  Star Square
+<!--
 ## Lernziele:
 
 ## Aufgabenstellung:
@@ -74,12 +14,74 @@ einen Codeblock.
 
 
 
-
+-->
 -------------------------------
 # **SPOILER**
 
-## PAP-Designer:
+```c#
+using System;
+using System.Threading;
+using System.Reflection.Metadata;
 
-## Visual Studio:
+namespace StarSquare
+{
+  internal class Program
+  {
+    static void Main()
+    {
+      const int consoleWidth = 80;
+      const int consoleHeight = 30;
+      Console.SetWindowSize(consoleWidth, consoleHeight);
 
-## Ausgabe:
+      string userInput;
+      int userInteger;
+
+      Console.Write("\n                 Starsquare                 " +
+                    "\n============================================" +
+                    "\n Welche Seitenlänge soll das Quadrat haben? " +
+                    "\n ");
+      userInput = Console.ReadLine();
+      int.TryParse(userInput, out userInteger);
+
+      for (int i = 0; i < userInteger; i++)
+      {
+        for (int j = 0; j < userInteger; j++)
+        {
+          Console.Write("*");
+        }
+        Console.Write("\n");
+      }
+      Thread.Sleep(1000);
+      Console.Clear();
+
+      /// put output into center:
+      for (int i = 0; i < (consoleHeight - userInteger) / 2; i++)
+      {
+        Console.Write("\n");
+      }
+      for (int j = 0; j < userInteger; j++)
+      {
+        for (int k = 0; k < (consoleWidth - userInteger) / 2; k++)
+        {
+          Console.Write(" ");
+        }
+        for (int l = 0; l < userInteger; l++)
+        {
+          Console.Write("*");
+        }
+        Console.Write("\n");
+      }
+      
+      /// wait for a key to remove the square
+      Console.ReadLine();
+      Console.Clear();
+
+      Console.Write("\nZum Beenden bitte Eingabetaste drücken ...");
+      Console.ReadLine();
+      Console.Clear();
+
+    }
+  }
+}
+
+```
